@@ -4,7 +4,9 @@ import { MenuTabs } from "@/components/menu/MenuTabs";
 import { DailyMenuList } from "@/components/menu/DailyMenuList";
 import { WeeklyMenuList } from "@/components/menu/WeeklyMenuList";
 import { Allergens } from "@/components/menu/Allergens";
-import { allergens, dailyMenus, weeklyDishes } from "@/data/menu";
+import { getMenuData } from "@/lib/get-menu";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Menu",
@@ -12,7 +14,9 @@ export const metadata: Metadata = {
     "Denné menu varíme od utorka do piatka. Týždenné jedlá sú v ponuke celý týždeň.",
 };
 
-export default function MenuPage() {
+export default async function MenuPage() {
+  const { dailyMenus, weeklyDishes, allergens } = await getMenuData();
+
   return (
     <>
       <MenuHero />

@@ -46,3 +46,6 @@ next-env.d.ts
 # local tooling used to inspect the design screenshots
 /.imgtools
 /.design-crops
+
+# images uploaded through the admin panel in local development
+/public/uploads

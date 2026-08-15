@@ -119,3 +119,19 @@ model Allergen {
   number Int    @unique
   label  String
 }
+
+/// Pop-up shown to visitors on the public site — picture plus text, switched on from the admin panel.
+model AlertWindow {
+  id          String    @id @default(cuid())
+  title       String
+  body        String
+  imageUrl    String?
+  buttonLabel String?
+  buttonUrl   String?
+  active      Boolean   @default(false)
+  /// Optional schedule. Empty means "show as long as it is active".
+  startsAt    DateTime?
+  endsAt      DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
