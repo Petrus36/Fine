@@ -1,0 +1,121 @@
+// Fine Bakery & Bistro — data model
+// Everything the admin panel can edit lives here.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  ADMIN
+  EDITOR
+}
+
+enum Weekday {
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+  SATURDAY
+  SUNDAY
+}
+
+enum Course {
+  SOUP
+  MAIN_ONE
+  MAIN_TWO
+  DESSERT
+  DAILY_SPECIAL
+}
+
+/// Admin panel account.
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String?
+  passwordHash String
+  role         Role     @default(EDITOR)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+/// One calendar week of daily menus. Publishing a week makes it public.
+model MenuWeek {
+  id         String      @id @default(cuid())
+  /// ISO week number, 1–53.
+  weekNumber Int
+  year       Int
+  published  Boolean     @default(false)
+  note       String?
+  days       DailyMenu[]
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+
+  @@unique([year, weekNumber])
+}
+
+/// The menu for a single day of a week.
+model DailyMenu {
+  id      String     @id @default(cuid())
+  weekId  String
+  week    MenuWeek   @relation(fields: [weekId], references: [id], onDelete: Cascade)
+  weekday Weekday
+  /// Concrete date, useful for "menu for the 14th" style lookups.
+  date    DateTime?
+  items   MenuItem[]
+
+  @@unique([weekId, weekday])
+}
+
+/// A single line of a daily menu: soup, main 1, main 2, dessert, daily special.
+model MenuItem {
+  id          String    @id @default(cuid())
+  dailyMenuId String
+  dailyMenu   DailyMenu @relation(fields: [dailyMenuId], references: [id], onDelete: Cascade)
+  course      Course
+  name        String
+  /// Allergen numbers rendered in brackets after the dish name.
+  allergens   Int[]
+  /// Null for courses included in the menu price (soup, dessert).
+  price       Decimal?  @db.Decimal(6, 2)
+  position    Int       @default(0)
+
+  @@index([dailyMenuId])
+}
+
+/// Dishes available the whole week, shown under the "Týždenné menu" tab.
+model WeeklyDish {
+  id          String             @id @default(cuid())
+  name        String
+  description String
+  allergens   Int[]
+  price       Decimal            @db.Decimal(6, 2)
+  active      Boolean            @default(true)
+  position    Int                @default(0)
+  options     WeeklyDishOption[]
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+}
+
+/// "Na výber" chips — protein or side choices for a weekly dish.
+model WeeklyDishOption {
+  id       String     @id @default(cuid())
+  dishId   String
+  dish     WeeklyDish @relation(fields: [dishId], references: [id], onDelete: Cascade)
+  label    String
+  position Int        @default(0)
+
+  @@index([dishId])
+}
+
+/// Legally required allergen legend printed under both menus.
+model Allergen {
+  id     String @id @default(cuid())
+  number Int    @unique
+  label  String
+}
