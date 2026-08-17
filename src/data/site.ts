@@ -10,7 +10,7 @@ export const site = {
   email: "fine@finerestaurant.sk",
   facebook: "https://facebook.com",
   instagram: "https://instagram.com",
-  orderUrl: "#objednavka",
+  orderUrl: "https://gastro.finerestaurant.sk/sk/",
   reservationUrl: "#rezervacia",
 } as const;
 

@@ -34,17 +34,25 @@ export function Button({
   className?: string;
   size?: "sm" | "md";
 }) {
+  const classNames = cn(
+    base,
+    variants[variant],
+    shapes[shape],
+    size === "sm" ? "px-5 py-2.5" : "px-7 py-3.5",
+    className,
+  );
+  const external = href.startsWith("http://") || href.startsWith("https://");
+
+  if (external) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" className={classNames}>
+        {children}
+      </a>
+    );
+  }
+
   return (
-    <Link
-      href={href}
-      className={cn(
-        base,
-        variants[variant],
-        shapes[shape],
-        size === "sm" ? "px-5 py-2.5" : "px-7 py-3.5",
-        className,
-      )}
-    >
+    <Link href={href} className={classNames}>
       {children}
     </Link>
   );

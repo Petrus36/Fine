@@ -6,7 +6,7 @@ export function MenuHero() {
   return (
     <section className="relative">
       <Photo
-        src="/images/menu-hero.jpg"
+        src="/images/fine-header-jedlo-stol.jpg"
         alt="Prestretý stôl s jedlom Fine Bakery & Bistro"
         className="h-[280px] w-full sm:h-[340px]"
         sizes="100vw"

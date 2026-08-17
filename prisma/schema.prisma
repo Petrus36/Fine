@@ -173,6 +173,18 @@ model ApartmentSettings {
   updatedAt         DateTime @updatedAt
 }
 
+/// Promo event on /akcie. Hidden from the public page when inactive.
+model Event {
+  id        String   @id @default(cuid())
+  title     String
+  body      String
+  imageUrl  String?
+  active    Boolean  @default(true)
+  position  Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 /// Pop-up shown to visitors on the public site — picture plus text, switched on from the admin panel.
 model AlertWindow {
   id          String    @id @default(cuid())

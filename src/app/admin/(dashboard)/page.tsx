@@ -11,13 +11,14 @@ export default async function AdminHomePage() {
   const user = await requireAdmin();
   const prisma = getPrisma();
 
-  const [publishedWeek, weekCount, dishCount, alert] = await Promise.all([
+  const [publishedWeek, weekCount, dishCount, eventCount, alert] = await Promise.all([
     prisma.menuWeek.findFirst({
       where: { published: true },
       select: { year: true, weekNumber: true },
     }),
     prisma.menuWeek.count(),
     prisma.weeklyDish.count({ where: { active: true } }),
+    prisma.event.count({ where: { active: true } }).catch(() => 0),
     prisma.alertWindow.findFirst({
       orderBy: { createdAt: "desc" },
       select: { active: true, title: true },
@@ -64,6 +65,15 @@ export default async function AdminHomePage() {
         ? `od ${formatEuro(cheapest.pricePerDay.toNumber())} / deň`
         : "Ceny ešte nie sú nastavené",
       note: "Denné ceny štyroch apartmánov",
+    },
+    {
+      href: "/admin/akcie",
+      title: "Akcie",
+      value:
+        eventCount === 0
+          ? "Žiadna na webe"
+          : `${eventCount} ${eventCount === 1 ? "akcia" : "akcií"} na webe`,
+      note: "Podujatia na stránke Akcie",
     },
     {
       href: "/admin/upozornenie",

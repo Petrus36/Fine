@@ -1,9 +1,14 @@
 import type { CatalogPageDef, CatalogPageKey } from "@/types/catalog";
 
-const heroPhoto = (src: string, alt: string, imageClassName?: string): CatalogPageDef["hero"] => ({
+const heroPhoto = (
+  src: string,
+  alt: string,
+  imageClassName?: string,
+  className = "h-[360px] w-full sm:h-[420px]",
+): CatalogPageDef["hero"] => ({
   src,
   alt,
-  className: "h-[360px] w-full sm:h-[420px]",
+  className,
   ...(imageClassName ? { imageClassName } : {}),
 });
 
@@ -11,14 +16,14 @@ const portrait = (src: string, alt: string, tall = false) => ({
   src,
   alt,
   className: tall
-    ? "h-[420px] w-full rounded-[10px] sm:h-[520px]"
-    : "h-[340px] w-full rounded-[10px] sm:h-[420px]",
+    ? "h-[460px] w-full rounded-[10px] sm:h-[560px]"
+    : "h-[380px] w-full rounded-[10px] sm:h-[460px]",
 });
 
 const landscape = (src: string, alt: string, imageClassName?: string) => ({
   src,
   alt,
-  className: "h-[240px] w-full rounded-[10px] sm:h-[280px]",
+  className: "h-[280px] w-full rounded-[10px] sm:h-[320px]",
   ...(imageClassName ? { imageClassName } : {}),
 });
 
@@ -84,7 +89,12 @@ export const catalogPages: Record<CatalogPageKey, CatalogPageDef> = {
     title: "Naše tradičné FINE jedlá",
     subtitle: "Tradičné Fine klasiky, ktoré u nás nájdete po celý rok.",
     description: "Polievky, predjedlá, šaláty a hlavné jedlá Fine klasiky.",
-    hero: heroPhoto("/images/alacarte-hero.jpg", "Tradičné Fine jedlá"),
+    hero: heroPhoto(
+      "/images/fine-header-jedlo-stol.jpg",
+      "Tradičné Fine jedlá",
+      "object-center",
+      "h-[400px] w-full sm:h-[460px]",
+    ),
     sections: [
       {
         key: "polievka",
@@ -92,7 +102,7 @@ export const catalogPages: Record<CatalogPageKey, CatalogPageDef> = {
         layout: {
           kind: "card-split",
           imageSide: "right",
-          image: landscape("/images/alacarte-polievka.jpg", "Polievka"),
+          image: landscape("/images/images.jpeg", "Polievka"),
         },
       },
       {
@@ -101,7 +111,7 @@ export const catalogPages: Record<CatalogPageKey, CatalogPageDef> = {
         layout: {
           kind: "card-split",
           imageSide: "left",
-          image: landscape("/images/alacarte-predjedla.jpg", "Predjedlá"),
+          image: landscape("/images/IMG_1595.jpg", "Predjedlá"),
         },
       },
       {
@@ -110,7 +120,11 @@ export const catalogPages: Record<CatalogPageKey, CatalogPageDef> = {
         layout: {
           kind: "card-split",
           imageSide: "right",
-          image: portrait("/images/alacarte-salaty.jpg", "Šalát", true),
+          image: {
+            src: "/images/nF19701uR-Se9P2bCg91LA.jpg",
+            alt: "Šalát",
+            className: "h-[380px] w-full rounded-[10px] sm:h-[460px]",
+          },
         },
       },
       {
@@ -119,7 +133,10 @@ export const catalogPages: Record<CatalogPageKey, CatalogPageDef> = {
         layout: {
           kind: "card-split",
           imageSide: "left",
-          image: portrait("/images/alacarte-hlavne.jpg", "Hlavné jedlo", true),
+          image: landscape(
+            "/images/hf_20260808_115437_902a5753-bbcd-40d9-8b9d-b504b06c4e9e.png",
+            "Hlavné jedlo",
+          ),
         },
       },
       {
