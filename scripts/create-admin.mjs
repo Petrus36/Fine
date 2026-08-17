@@ -2,10 +2,11 @@ import "dotenv/config";
 import { randomBytes, randomUUID } from "node:crypto";
 import { neon } from "@neondatabase/serverless";
 import bcrypt from "bcryptjs";
+import { getDatabaseUrl } from "./get-database-url.mjs";
 
-const url = process.env.DATABASE_URL;
+const url = getDatabaseUrl();
 if (!url) {
-  console.error("DATABASE_URL is missing from .env");
+  console.error("Database URL is missing — set DATABASE_URL or Storage_DATABASE_URL.");
   process.exit(1);
 }
 

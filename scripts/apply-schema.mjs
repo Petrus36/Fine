@@ -1,10 +1,11 @@
 import "dotenv/config";
 import { neon } from "@neondatabase/serverless";
 import { execSync } from "node:child_process";
+import { getDatabaseUrl } from "./get-database-url.mjs";
 
-const url = process.env.DATABASE_URL;
+const url = getDatabaseUrl({ preferUnpooled: true });
 if (!url) {
-  console.error("DATABASE_URL is missing from .env");
+  console.error("Database URL is missing — set DATABASE_URL or Storage_DATABASE_URL.");
   process.exit(1);
 }
 
