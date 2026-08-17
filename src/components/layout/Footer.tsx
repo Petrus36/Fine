@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/Button";
 import { footerLinks, openingHours, site } from "@/data/site";
 
 const columnTitle =
-  "text-[10px] font-semibold uppercase tracking-[0.2em] text-paper/50";
-const columnItem = "text-[12px] leading-[2.1] text-paper/85";
+  "font-body text-[10px] font-semibold uppercase tracking-[0.2em] text-paper/50";
+const columnItem = "font-body text-[12px] leading-[2.1] font-normal text-paper/85";
 
 export function Footer() {
   return (
@@ -18,9 +18,7 @@ export function Footer() {
               <ul className="mt-4">
                 {openingHours.map((row) => (
                   <li key={row.days} className={columnItem}>
-                    {row.days}
-                    {row.hours === "Zatvorené" ? " " : ": "}
-                    {row.hours}
+                    {row.days}: {row.hours}
                   </li>
                 ))}
               </ul>
@@ -45,8 +43,9 @@ export function Footer() {
             <div>
               <p className={columnTitle}>Kontakt</p>
               <ul className="mt-4">
-                <li className={columnItem}>{site.legalName}</li>
-                <li className={columnItem}>{site.address}</li>
+                <li className={columnItem}>
+                  {site.legalName}, {site.address}
+                </li>
                 <li className={columnItem}>
                   <a href={`tel:${site.phone.replace(/\s/g, "")}`} className="hover:text-paper">
                     {site.phone}
@@ -84,11 +83,11 @@ export function Footer() {
           </div>
 
           <div className="mt-12 space-y-2 border-t border-paper/10 pt-6">
-            <p className="text-[10px] leading-relaxed text-paper/45">
+            <p className="font-body text-[10px] leading-relaxed font-normal text-paper/45">
               Prístup ku gastru zostal ten istý ako za čias Fine Restaurant, len s novou vášňou
               ku remeselnému pečivu.
             </p>
-            <p className="text-[10px] text-paper/45">
+            <p className="font-body text-[10px] font-normal text-paper/45">
               © {new Date().getFullYear()} Fine Bakery &amp; Bistro. Všetky práva vyhradené.
             </p>
           </div>

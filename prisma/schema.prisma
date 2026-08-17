@@ -151,6 +151,28 @@ model CatalogItem {
   @@index([page, section])
 }
 
+/// One of the four apartments above the bistro. Daily rate is edited in admin.
+model Apartment {
+  id          String   @id @default(cuid())
+  number      Int      @unique
+  name        String
+  maxGuests   Int      @default(2)
+  pricePerDay Decimal  @db.Decimal(6, 2)
+  note        String   @default("nad 30 dní cena v zmluve")
+  position    Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+/// Extra fees shown next to the apartment price cards.
+model ApartmentSettings {
+  id                String   @id @default("default")
+  extraPersonPerDay Decimal  @db.Decimal(6, 2)
+  cleaningFee       Decimal  @db.Decimal(6, 2)
+  validFrom         String
+  updatedAt         DateTime @updatedAt
+}
+
 /// Pop-up shown to visitors on the public site — picture plus text, switched on from the admin panel.
 model AlertWindow {
   id          String    @id @default(cuid())

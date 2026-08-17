@@ -3,7 +3,7 @@ import { neon } from "@neondatabase/serverless";
 import { execSync } from "node:child_process";
 import { getDatabaseUrl } from "./get-database-url.mjs";
 
-const url = getDatabaseUrl({ preferUnpooled: true });
+const url = getDatabaseUrl();
 if (!url) {
   console.error("Database URL is missing — set DATABASE_URL or Storage_DATABASE_URL.");
   process.exit(1);

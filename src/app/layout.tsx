@@ -1,9 +1,23 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { DM_Sans, Fraunces, Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
+});
+
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin", "latin-ext"],
+  weight: ["400", "600", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
   subsets: ["latin", "latin-ext"],
   display: "swap",
 });
@@ -29,7 +43,7 @@ export default function RootLayout({
   return (
     <html
       lang="sk"
-      className={`${playfair.variable} ${inter.variable} h-full antialiased`}
+      className={`${playfair.variable} ${fraunces.variable} ${dmSans.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-cream">{children}</body>
     </html>

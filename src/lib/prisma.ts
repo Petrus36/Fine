@@ -1,3 +1,4 @@
+import { neonConfig } from "@neondatabase/serverless";
 import { PrismaNeon } from "@prisma/adapter-neon";
 import { PrismaClient } from "@/generated/prisma/client";
 
@@ -17,6 +18,17 @@ function getConnectionString(): string | undefined {
   );
 }
 
+/**
+ * Neon’s serverless driver (used on Vercel) does not support channel_binding.
+ * Neon’s dashboard now appends it by default, which makes Prisma queries throw
+ * in production while local Node can still look fine.
+ */
+function forServerlessDriver(url: string): string {
+  const parsed = new URL(url);
+  parsed.searchParams.delete("channel_binding");
+  return parsed.toString();
+}
+
 function createClient() {
   const connectionString = getConnectionString();
 
@@ -26,7 +38,12 @@ function createClient() {
     );
   }
 
-  return new PrismaClient({ adapter: new PrismaNeon({ connectionString }) });
+  // HTTP instead of WebSockets — WebSocket upgrades often fail in Vercel serverless.
+  neonConfig.poolQueryViaFetch = true;
+
+  return new PrismaClient({
+    adapter: new PrismaNeon({ connectionString: forServerlessDriver(connectionString) }),
+  });
 }
 
 export function getPrisma(): PrismaClient {

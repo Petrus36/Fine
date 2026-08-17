@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { requireAdmin } from "@/lib/auth";
 import { getPrisma } from "@/lib/prisma";
+import { formatEuro } from "@/lib/format";
 import { formatWeekRange } from "@/lib/week";
 import { cardClass } from "@/components/admin/styles";
 
@@ -22,6 +23,16 @@ export default async function AdminHomePage() {
       select: { active: true, title: true },
     }),
   ]);
+
+  let cheapest: { pricePerDay: { toNumber(): number } } | null = null;
+  try {
+    cheapest = await prisma.apartment.findFirst({
+      orderBy: { pricePerDay: "asc" },
+      select: { pricePerDay: true },
+    });
+  } catch (error) {
+    console.error("Could not load apartment prices.", error);
+  }
 
   const cards = [
     {
@@ -47,6 +58,14 @@ export default async function AdminHomePage() {
       note: "Položky na štyroch stránkach",
     },
     {
+      href: "/admin/apartmany",
+      title: "Apartmány",
+      value: cheapest
+        ? `od ${formatEuro(cheapest.pricePerDay.toNumber())} / deň`
+        : "Ceny ešte nie sú nastavené",
+      note: "Denné ceny štyroch apartmánov",
+    },
+    {
       href: "/admin/upozornenie",
       title: "Upozornenie",
       value: alert?.active ? "Zapnuté" : "Vypnuté",
@@ -65,7 +84,7 @@ export default async function AdminHomePage() {
         </p>
       </header>
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {cards.map((card) => (
           <Link
             key={card.href}

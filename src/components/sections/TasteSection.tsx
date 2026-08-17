@@ -33,13 +33,13 @@ export function TasteSection() {
     <section className="bg-cream py-20">
       <Container>
         <div className="mx-auto max-w-[620px] text-center">
-          <p className="font-display text-[12px] font-semibold tracking-[0.16em] text-rust uppercase italic">
+          <p className="font-banner text-[36px] leading-none font-[600] tracking-[0.015em] text-rust italic">
             Rozdiel v chuti
           </p>
-          <h2 className="font-display mt-4 text-[32px] leading-[1.15] font-normal tracking-[0.01em] text-ink uppercase sm:text-[38px]">
+          <h2 className="font-banner mt-4 text-[32px] leading-[1.15] font-normal tracking-[0.01em] text-ink uppercase sm:text-[38px]">
             Poznáte to hneď na prvom súste
           </h2>
-          <p className="mt-5 text-[12px] leading-[1.9] text-stone">
+          <p className="font-body mt-5 text-[12px] leading-[1.9] font-normal text-stone">
             Pripravujeme pre vás pestré kulinárske špeciality z rôznych kútov sveta, ale tradičné
             jedlá nie sú výnimkou. Vyberáme len kvalitné a čerstvé suroviny. Zárukou kvality našich
             jedál je aj najmodernejšia gastrotechnológia a skúsený tím kuchárov.

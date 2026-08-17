@@ -1,7 +1,11 @@
 export const site = {
   name: "Fine Bakery & Bistro",
   legalName: "FINE s.r.o.",
-  address: "Generála M. R. Štefánika 1429, 911 01 Trenčín",
+  addressStreet: "Generála M. R. Štefánika 1429",
+  addressCity: "901 01 Malacky",
+  address: "Generála M. R. Štefánika 1429, 901 01 Malacky",
+  ico: "45860114",
+  dic: "2023121749",
   phone: "+421 917 917 916",
   email: "fine@finerestaurant.sk",
   facebook: "https://facebook.com",
@@ -23,7 +27,7 @@ export const secondaryNav = [
 
 export const openingHours = [
   { days: "Pondelok", hours: "Zatvorené" },
-  { days: "Utorok – Sobota", hours: "7:00 – 15:00" },
+  { days: "Utorok - Sobota", hours: "7:00-15:00" },
   { days: "Nedeľa", hours: "Zatvorené" },
 ] as const;
 
