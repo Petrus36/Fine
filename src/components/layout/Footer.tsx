@@ -7,11 +7,14 @@ const columnTitle =
   "font-body text-[10px] font-semibold uppercase tracking-[0.2em] text-paper/50";
 const columnItem = "font-body text-[12px] leading-[2.1] font-normal text-paper/85";
 
+const footerButtonClass =
+  "!flex w-full max-w-full justify-center whitespace-normal px-5 py-3 text-center leading-snug sm:!inline-flex sm:w-auto sm:whitespace-nowrap sm:px-7 sm:py-3.5";
+
 export function Footer() {
   return (
     <footer className="bg-footer-outer px-4 pt-6 pb-8 sm:px-6 sm:pb-10">
       <Container className="px-0">
-        <div className="rounded-[6px] bg-footer-inner px-8 py-12 sm:px-12">
+        <div className="rounded-[6px] bg-footer-inner px-6 py-10 sm:px-12 sm:py-12">
           <div className="grid gap-10 lg:grid-cols-[1.1fr_1fr_1.3fr_1fr]">
             <div>
               <p className={columnTitle}>Otváracie hodiny</p>
@@ -69,13 +72,13 @@ export function Footer() {
               </ul>
             </div>
 
-            <div>
+            <div className="min-w-0">
               <p className={columnTitle}>Rezervujte / Objednajte</p>
-              <div className="mt-4 flex flex-col items-start gap-3">
-                <Button href={site.orderUrl} className="w-full sm:w-auto">
+              <div className="mt-4 flex flex-col gap-3">
+                <Button href={site.orderUrl} className={footerButtonClass}>
                   Objednať jedlo online
                 </Button>
-                <Button href={site.reservationUrl} className="w-full sm:w-auto">
+                <Button href={site.reservationUrl} className={footerButtonClass}>
                   Rezervovať ubytovanie
                 </Button>
               </div>

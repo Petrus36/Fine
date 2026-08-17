@@ -11,7 +11,8 @@ export const site = {
   facebook: "https://facebook.com",
   instagram: "https://instagram.com",
   orderUrl: "https://gastro.finerestaurant.sk/sk/",
-  reservationUrl: "#rezervacia",
+  reservationUrl:
+    "https://www.secure-hotel-booking.com/d-edge/FINE-Restaurant-Apartments/2564/sk/DateSelection?invalidateEngineCache=true",
 } as const;
 
 export const mainNav = [

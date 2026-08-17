@@ -1,5 +1,4 @@
 import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/format";
 
 export function FineClub({ tone = "light" }: { tone?: "light" | "dark" }) {
@@ -10,31 +9,34 @@ export function FineClub({ tone = "light" }: { tone?: "light" | "dark" }) {
       <Container>
         <div
           className={cn(
-            "flex flex-col gap-6 rounded-[4px] px-8 py-8 sm:px-12 md:flex-row md:items-center md:justify-between",
+            "flex flex-col items-center gap-4 rounded-[4px] px-8 py-8 text-center sm:px-12",
             isDark ? "bg-bark" : "bg-paper",
           )}
         >
-          <div>
-            <p
-              className={cn(
-                "font-display text-[17px] leading-none",
-                isDark ? "text-paper" : "text-ink",
-              )}
-            >
-              Fine Club
-            </p>
-            <p
-              className={cn(
-                "mt-2.5 text-[12px]",
-                isDark ? "text-paper/75" : "text-stone",
-              )}
-            >
-              Získajte novinky, sezónne menu a zľavy priamo do e-mailu.
-            </p>
-          </div>
-          <Button href="/fine-club" className="self-start md:self-auto">
-            Pridaj sa do Fine Club
-          </Button>
+          <p
+            className={cn(
+              "font-display text-[17px] leading-none",
+              isDark ? "text-paper" : "text-ink",
+            )}
+          >
+            Fine Club
+          </p>
+          <p
+            className={cn(
+              "max-w-[420px] text-[12px] leading-relaxed",
+              isDark ? "text-paper/75" : "text-stone",
+            )}
+          >
+            Získajte novinky, sezónne menu a zľavy priamo do e-mailu.
+          </p>
+          <p
+            className={cn(
+              "font-banner mt-1 text-[22px] font-normal tracking-[0.02em] sm:text-[26px]",
+              isDark ? "text-paper/90" : "text-espresso",
+            )}
+          >
+            Už čoskoro, pripravujeme
+          </p>
         </div>
       </Container>
     </section>

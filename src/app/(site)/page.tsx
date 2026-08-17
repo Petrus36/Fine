@@ -21,6 +21,7 @@ const offerCards = [
     hours: "Ut – Ne  7:00 – 11:00",
     linkLabel: "Raňajkové menu",
     href: "/ranajky",
+    image: "/images/ranajky (1).png",
   },
   {
     eyebrow: "Špeciality týždňa",
