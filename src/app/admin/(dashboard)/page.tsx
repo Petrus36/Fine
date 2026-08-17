@@ -41,6 +41,12 @@ export default async function AdminHomePage() {
       note: "Jedlá v ponuke celý týždeň",
     },
     {
+      href: "/admin/ponuka",
+      title: "Stála ponuka",
+      value: "Pečivo, raňajky, nápoje, klasika",
+      note: "Položky na štyroch stránkach",
+    },
+    {
       href: "/admin/upozornenie",
       title: "Upozornenie",
       value: alert?.active ? "Zapnuté" : "Vypnuté",
@@ -59,7 +65,7 @@ export default async function AdminHomePage() {
         </p>
       </header>
 
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {cards.map((card) => (
           <Link
             key={card.href}

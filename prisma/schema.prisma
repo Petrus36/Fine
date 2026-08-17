@@ -120,6 +120,37 @@ model Allergen {
   label  String
 }
 
+enum CatalogPage {
+  PECIVO
+  A_LA_CARTE
+  RANAJKY
+  NAPOJE
+}
+
+/// One line on a standing menu (pečivo, à la carte, raňajky, nápoje).
+/// Section keys are fixed in the page layout — only these rows are editable.
+model CatalogItem {
+  id          String      @id @default(cuid())
+  page        CatalogPage
+  section     String
+  /// Optional group heading inside a section, e.g. "KLASICKÝ" or "Prídavky k šalátu".
+  category    String?
+  name        String
+  description String?
+  allergens   Int[]
+  /// Weight or volume shown under the name — "200 g", "0,25 l".
+  portion     String?
+  price       Decimal     @db.Decimal(6, 2)
+  /// Second price for two sizes, e.g. lemonade 0,3 / 0,5.
+  priceAlt    Decimal?    @db.Decimal(6, 2)
+  position    Int         @default(0)
+  active      Boolean     @default(true)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  @@index([page, section])
+}
+
 /// Pop-up shown to visitors on the public site — picture plus text, switched on from the admin panel.
 model AlertWindow {
   id          String    @id @default(cuid())

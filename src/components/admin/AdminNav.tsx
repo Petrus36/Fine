@@ -8,6 +8,7 @@ const links = [
   { href: "/admin", label: "Prehľad" },
   { href: "/admin/denne-menu", label: "Denné menu" },
   { href: "/admin/tyzdenne-menu", label: "Týždenné menu" },
+  { href: "/admin/ponuka", label: "Ponuka" },
   { href: "/admin/upozornenie", label: "Upozornenie" },
 ];
 

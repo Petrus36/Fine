@@ -65,7 +65,7 @@ const smallCards: Array<{
     description: "Čo u nás práve beží.",
     linkLabel: "Pozrieť akcie",
     href: "/akcie",
-    image: "/images/unnamed.jpg",
+    image: "/images/IMG_1581.JPG",
   },
 ];
 
