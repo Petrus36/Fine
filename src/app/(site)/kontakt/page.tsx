@@ -78,11 +78,26 @@ export default function KontaktPage() {
                   {card.title}
                 </p>
                 <div className="mx-auto mt-3 h-px w-10 bg-clay/70" />
-                <div className="font-body mt-4 space-y-1.5 text-[13px] leading-relaxed font-normal text-stone">
-                  {card.lines.map((line) => (
-                    <p key={line}>{line}</p>
-                  ))}
-                </div>
+                {"lines" in card ? (
+                  <div className="font-body mt-4 space-y-1.5 text-[13px] leading-relaxed font-normal text-stone">
+                    {card.lines.map((line) => (
+                      <p key={line}>{line}</p>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="font-body mx-auto mt-4 inline-grid grid-cols-[auto_auto] gap-x-8 gap-y-1 text-left font-normal">
+                    {card.hours.map((row) => (
+                      <div key={row.day} className="contents">
+                        <span className="text-[13px] font-[400] text-ink lowercase">
+                          {row.day}
+                        </span>
+                        <span className="text-[13px] font-[400] text-ink lowercase">
+                          {row.hours}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </article>
             ))}
           </div>

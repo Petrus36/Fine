@@ -1,11 +1,13 @@
 import { site } from "@/data/site";
 
 export const contactOpeningHours = [
-  { days: "Pondelok", hours: "Zatvorené" },
-  { days: "Utorok – Štvrtok", hours: "11:00 – 16:00" },
-  { days: "Piatok", hours: "11:00 – 21:00" },
-  { days: "Sobota", hours: "11:00 – 21:00" },
-  { days: "Nedeľa", hours: "11:00 – 16:00" },
+  { day: "pondelok", hours: "zatvorené" },
+  { day: "utorok", hours: "7:00-15:00" },
+  { day: "streda", hours: "7:00-15:00" },
+  { day: "štvrtok", hours: "7:00-15:00" },
+  { day: "piatok", hours: "7:00-15:00" },
+  { day: "sobota", hours: "7:00-15:00" },
+  { day: "nedeľa", hours: "zatvorené" },
 ] as const;
 
 export const contactHero = {
@@ -39,7 +41,7 @@ export const contactCards = [
     key: "contact",
     title: "Kontakt",
     lines: [
-      `Manažér: ${site.phone}`,
+      `Manažér: ${site.managerPhone}`,
       `Ubytovanie: ${site.phone}`,
       site.email,
     ],
@@ -47,6 +49,6 @@ export const contactCards = [
   {
     key: "hours",
     title: "Otváracie hodiny",
-    lines: contactOpeningHours.map((row) => `${row.days}: ${row.hours}`),
+    hours: contactOpeningHours,
   },
 ] as const;

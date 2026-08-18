@@ -7,6 +7,7 @@ export const site = {
   ico: "45860114",
   dic: "2023121749",
   phone: "+421 917 917 916",
+  managerPhone: "+421 917 603 684",
   email: "fine@finerestaurant.sk",
   facebook: "https://facebook.com",
   instagram: "https://instagram.com",
