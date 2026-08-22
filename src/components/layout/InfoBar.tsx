@@ -5,12 +5,12 @@ type IconName = "clock" | "cloche" | "bed" | "phone";
 
 function Icon({ name }: { name: IconName }) {
   const common = {
-    width: 16,
-    height: 16,
+    width: 22,
+    height: 22,
     viewBox: "0 0 24 24",
     fill: "none",
     stroke: "currentColor",
-    strokeWidth: 1.4,
+    strokeWidth: 1.5,
     strokeLinecap: "round" as const,
     strokeLinejoin: "round" as const,
   };
@@ -63,20 +63,20 @@ export function InfoBar({ tone = "light" }: { tone?: "light" | "dark" }) {
       <Container>
         <div className="grid gap-6 py-6 sm:grid-cols-2 lg:grid-cols-4">
           {highlights.map((item) => (
-            <div key={item.label} className="flex items-start gap-3">
-              <span className={isDark ? "mt-0.5 text-paper/80" : "mt-0.5 text-clay"}>
+            <div key={item.label} className="flex items-center gap-4">
+              <span className={isDark ? "shrink-0 text-paper/80" : "shrink-0 text-clay"}>
                 <Icon name={item.icon} />
               </span>
               <div>
                 <p
-                  className={`font-display text-[10px] font-semibold tracking-[0.18em] uppercase ${
+                  className={`font-display text-[11px] font-semibold tracking-[0.16em] uppercase ${
                     isDark ? "text-paper" : "text-espresso"
                   }`}
                 >
                   {item.label}
                 </p>
                 <p
-                  className={`mt-1 text-[12px] ${isDark ? "text-paper/80" : "text-stone"}`}
+                  className={`mt-1.5 text-[13px] leading-snug ${isDark ? "text-paper/80" : "text-stone"}`}
                 >
                   {item.value}
                 </p>

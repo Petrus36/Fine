@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { cn } from "@/lib/format";
 
-type Variant = "primary" | "outline" | "ghost";
+type Variant = "primary" | "outline" | "outlineFill" | "ghost";
 type Shape = "square" | "pill";
 
 const base =
@@ -11,6 +11,8 @@ const variants: Record<Variant, string> = {
   primary: "bg-clay text-paper hover:bg-rust",
   outline:
     "border border-hairline bg-paper/90 text-ink hover:border-clay hover:text-clay",
+  outlineFill:
+    "border border-hairline bg-paper/90 text-ink hover:border-clay hover:bg-clay hover:text-paper",
   ghost: "text-ink hover:text-clay",
 };
 

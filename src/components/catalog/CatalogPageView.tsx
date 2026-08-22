@@ -46,7 +46,9 @@ export function CatalogPageView({
         </Container>
       </section>
 
-      <CatalogCta heading={page.ctaHeading} />
+      {page.showOrderCta ?? true ? (
+        <CatalogCta heading={page.ctaHeading} />
+      ) : null}
       <Allergens items={allergens} />
     </>
   );

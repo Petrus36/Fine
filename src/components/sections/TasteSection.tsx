@@ -33,10 +33,10 @@ export function TasteSection() {
     <section className="bg-cream py-20">
       <Container>
         <div className="mx-auto max-w-[620px] text-center">
-          <p className="font-banner text-[36px] leading-none font-[600] tracking-[0.015em] text-rust italic">
+          <p className="font-banner text-[36px] leading-none font-[600] italic tracking-[0.015em] text-[#A8481F]">
             Rozdiel v chuti
           </p>
-          <h2 className="font-banner mt-4 text-[32px] leading-[1.15] font-normal tracking-[0.01em] text-ink uppercase sm:text-[38px]">
+          <h2 className="font-banner mt-4 text-[48px] leading-[1.15] font-[400] tracking-normal text-ink uppercase">
             Poznáte to hneď na prvom súste
           </h2>
           <p className="font-body mt-5 text-[12px] leading-[1.9] font-normal text-stone">

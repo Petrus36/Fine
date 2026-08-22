@@ -11,7 +11,7 @@ const playfair = Playfair_Display({
 const fraunces = Fraunces({
   variable: "--font-fraunces",
   subsets: ["latin", "latin-ext"],
-  weight: ["400", "600", "700"],
+  weight: ["400", "600", "700", "900"],
   style: ["normal", "italic"],
   display: "swap",
 });

@@ -14,7 +14,7 @@ export function ApartmentCta() {
         overlayClassName="bg-[linear-gradient(180deg,rgba(39,27,16,0.45)_0%,rgba(39,27,16,0.58)_100%)]"
       />
       <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-        <p className="font-body text-[12px] font-semibold tracking-[0.2em] text-rust uppercase sm:text-[13px]">
+        <p className="font-body text-[13px] leading-none font-[500] tracking-[1.4px] text-[#D4835A] uppercase">
           {apartmentCta.eyebrow}
         </p>
         <h2 className="font-banner mt-3 text-[32px] font-normal text-paper sm:text-[40px]">

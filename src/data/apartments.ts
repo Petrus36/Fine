@@ -41,11 +41,11 @@ export const apartmentAmenities = {
   src: "/images/DSC06304.jpg",
   alt: "Spálňa s balkónom v apartmáne Fine",
   items: [
-    { key: "wifi", label: "Wi-Fi" },
+    { key: "kitchen", label: "Plne vybavená kuchyňa" },
     { key: "tv", label: "TV" },
+    { key: "wifi", label: "WiFi" },
+    { key: "klima", label: "Klíma" },
     { key: "parking", label: "Parkovanie" },
-    { key: "kitchen", label: "Kuchyňa" },
-    { key: "laundry", label: "Práčka" },
   ] as const,
 };
 

@@ -30,10 +30,10 @@ export default async function ApartmanyPage() {
           className="h-[440px] w-full sm:h-[560px]"
           sizes="100vw"
           priority
-          overlayClassName="bg-[linear-gradient(180deg,rgba(39,27,16,0.42)_0%,rgba(39,27,16,0.52)_100%)]"
+          overlayClassName="bg-[linear-gradient(180deg,rgba(39,27,16,0.62)_0%,rgba(39,27,16,0.8)_100%)]"
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-          <p className="font-body text-[12px] font-semibold tracking-[0.2em] text-rust uppercase sm:text-[13px]">
+          <p className="font-body text-[12px] font-[500] tracking-[0.2em] text-[#D4835A] uppercase sm:text-[13px]">
             {apartmentHero.eyebrow}
           </p>
           <h1 className="font-banner mt-3 text-[40px] leading-none font-bold tracking-[0.04em] text-paper uppercase drop-shadow-[0_2px_12px_rgba(39,27,16,0.25)] sm:text-[64px]">

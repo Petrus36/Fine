@@ -207,6 +207,7 @@ export const catalogPages: Record<CatalogPageKey, CatalogPageDef> = {
     hero: heroPhoto("/images/IMG_1581.JPG", "Nápojový lístok Fine", "object-[center_22%]"),
     eyebrow: "Kvalitná káva, čaj a limonády",
     showHeroOrder: false,
+    showOrderCta: false,
     sections: [
       {
         key: "kava",

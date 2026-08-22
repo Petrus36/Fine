@@ -18,7 +18,7 @@ const offerCards = [
   {
     eyebrow: "Ráno",
     title: "Raňajkové menu",
-    hours: "Ut – Ne  7:00 – 11:00",
+    hours: "Ut – So  7:00 – 11:00",
     linkLabel: "Raňajkové menu",
     href: "/ranajky",
     image: "/images/ranajky (1).png",
@@ -46,15 +46,17 @@ export default function HomePage() {
           overlayClassName="bg-[linear-gradient(180deg,rgba(252,249,241,0.82)_0%,rgba(252,249,241,0.95)_30%,rgba(252,249,241,0.12)_65%,rgba(252,249,241,0)_100%)]"
         />
         <div className="absolute inset-x-0 top-0 flex flex-col items-center px-6 pt-16 text-center sm:pt-24">
-          <p className="text-[9px] font-semibold tracking-[0.28em] text-clay uppercase">
+          <p className="font-body text-[9px] font-[500] tracking-[0.28em] text-[#A8481F] uppercase">
             Bistro · Pekáreň · Apartmány
           </p>
-          <h1 className="font-display mt-5 max-w-[760px] text-[34px] leading-[1.1] font-bold tracking-[0.01em] text-espresso uppercase sm:text-[46px]">
+          <h1 className="font-banner mt-5 max-w-[760px] text-[40px] leading-[1.1] font-[900] tracking-[0.01em] text-espresso uppercase sm:text-[54px]">
             Fine Bakery &amp; Bistro &amp; Apartments
           </h1>
           <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
-            <Button href={site.orderUrl}>Objednať online</Button>
-            <Button href="/menu" variant="outline">
+            <Button href={site.orderUrl} variant="outlineFill">
+              Objednať online
+            </Button>
+            <Button href="/menu" variant="outlineFill">
               Pozrieť menu
             </Button>
           </div>
@@ -66,12 +68,12 @@ export default function HomePage() {
       <section className="bg-cream py-20">
         <Container>
           <div className="mx-auto max-w-[560px] text-center">
-            <h2 className="font-display text-[30px] leading-[1.15] font-normal tracking-[0.01em] text-ink uppercase sm:text-[36px]">
+            <h2 className="font-banner text-[30px] leading-[1.15] font-[400] tracking-[0.01em] text-ink uppercase sm:text-[36px]">
               Kuchyňa ktorá sa hýbe s dňom
             </h2>
-            <p className="mt-5 text-[12px] leading-[1.9] text-stone">
-              Ráno čerstvé raňajky a pečivo, cez obed denné menu a poobede týždenné
-              špeciality.
+            <p className="font-body mt-5 text-[12px] leading-[1.9] font-[400] text-stone">
+              Doobeda raňajky, čerstvý chlieb či pečivo, na obed denné menu alebo
+              týždenné špeciality.
             </p>
           </div>
 
@@ -88,7 +90,7 @@ export default function HomePage() {
                   <p className="text-[9px] font-semibold tracking-[0.22em] text-rust uppercase">
                     {card.eyebrow}
                   </p>
-                  <h3 className="font-display mt-3 text-[17px] font-bold tracking-[0.04em] text-ink uppercase">
+                  <h3 className="font-banner mt-3 text-[17px] font-[400] tracking-[0.04em] text-ink uppercase">
                     {card.title}
                   </h3>
                   <p className="mt-2 text-[11px] text-stone">{card.hours}</p>
@@ -112,14 +114,14 @@ export default function HomePage() {
               className="h-[300px] w-full md:h-[420px]"
             />
             <div className="flex flex-col justify-center bg-paper px-9 py-12 text-center md:px-14">
-              <h2 className="font-display text-[26px] leading-[1.2] font-bold tracking-[0.01em] text-ink uppercase sm:text-[30px]">
+              <h2 className="font-display text-[26px] leading-[1.2] font-bold tracking-[0.01em] text-ink uppercase [text-shadow:0_4px_4px_rgba(0,0,0,0.25)] sm:text-[30px]">
                 Pečenie je pre nás{" "}
                 <span className="text-rust italic">remeslom</span>
               </h2>
-              <p className="mt-5 text-[11.5px] leading-[1.9] text-stone">
-                Pečieme z poctivých surovín, bez nároku, žiaden kompromis. Kváskový chlieb, jemné
-                pečivo a sezónne koláče pripravujeme každý deň nanovo — tak, ako to robili
-                generácie pred nami.
+              <p className="font-body mt-5 text-[11.5px] leading-[1.9] font-[400] text-[#000000]">
+                Pečenie je pre nás remeslo, nie výroba. Dávame mu čas na pomalé kvasenie, vyberáme
+                suroviny, na ktorých naozaj záleží, a k pečivu pristupujeme rovnako precízne ako
+                ku každému jedlu na tanieri.
               </p>
               <div className="mt-7 flex justify-center">
                 <Button href="/bakery-bistro" shape="pill">
@@ -131,15 +133,16 @@ export default function HomePage() {
 
           <div className="grid items-stretch md:grid-cols-2">
             <div className="order-2 flex flex-col justify-center bg-paper px-9 py-12 text-center md:order-1 md:px-14">
-              <p className="font-display text-[24px] leading-none font-bold text-rust uppercase italic sm:text-[26px]">
+              <p className="font-display text-[24px] leading-none font-bold text-rust uppercase italic [text-shadow:0_4px_4px_rgba(0,0,0,0.25)] sm:text-[26px]">
                 Objavte
               </p>
-              <h2 className="font-display mt-2 text-[26px] leading-[1.2] font-bold tracking-[0.01em] text-ink uppercase sm:text-[30px]">
+              <h2 className="font-display mt-2 text-[26px] leading-[1.2] font-bold tracking-[0.01em] text-ink uppercase [text-shadow:0_4px_4px_rgba(0,0,0,0.25)] sm:text-[30px]">
                 Naše menu
               </h2>
-              <p className="mt-5 text-[11.5px] leading-[1.9] text-stone">
-                Od poctivých slovenských klasík cez ázijské špeciality až po sezónne šaláty.
-                Denné menu meníme každý deň, týždenné jedlá zostávajú v ponuke celý týždeň.
+              <p className="font-body mt-5 text-[11.5px] leading-[1.9] font-[400] text-[#000000]">
+                Od poctivého denného obeda, Fine tradičných jedál až po týždenné špeciality zo
+                všetkých kútov sveta. Nech varíme čokoľvek, robíme to tak, ako sa ozaj patrí, od
+                výberu kvalitných surovín až po posledný detail na tanieri.
               </p>
               <div className="mt-7 flex justify-center">
                 <Button href="/menu" shape="pill">
@@ -165,13 +168,13 @@ export default function HomePage() {
           alt="Pekár s plechom čerstvého chleba"
           className="h-[420px] w-full sm:h-[500px]"
           sizes="100vw"
-          overlayClassName="bg-[linear-gradient(180deg,rgba(39,27,16,0.45)_0%,rgba(39,27,16,0.72)_100%)]"
+          overlayClassName="bg-[linear-gradient(180deg,rgba(39,27,16,0.58)_0%,rgba(39,27,16,0.78)_100%)]"
         />
         <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-          <p className="font-display text-[13px] font-semibold tracking-[0.04em] text-rust italic">
+          <p className="font-body text-[13px] leading-none font-[500] tracking-[1.5px] text-[#D4835A]">
             Fine Bakery
           </p>
-          <h2 className="font-display mt-4 max-w-[640px] text-[30px] leading-[1.2] font-normal text-paper sm:text-[38px]">
+          <h2 className="font-banner mt-4 max-w-[640px] text-[56px] leading-[64px] font-[700] tracking-[-1.5px] text-[#F6EFE1]">
             Tradičná chuť s citom pre inováciu
           </h2>
           <p className="mt-4 max-w-[480px] text-[13px] leading-relaxed text-paper/85">

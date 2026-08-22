@@ -61,7 +61,7 @@ export const aboutStories = [
   {
     title: "Čas, najdôležitejšia prísada k dokonalému chlebu",
     titleLines: [
-      { text: "Čas", accent: true },
+      { text: "Čas,", accent: true },
       "najdôležitejšia",
       "prísada k",
       "dokonalému",

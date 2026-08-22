@@ -60,5 +60,6 @@ export interface CatalogPageDef {
   hoursNote?: string;
   ctaHeading?: string;
   showHeroOrder?: boolean;
+  showOrderCta?: boolean;
   sections: CatalogSectionDef[];
 }

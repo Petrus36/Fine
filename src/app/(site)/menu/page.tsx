@@ -4,6 +4,7 @@ import { MenuTabs } from "@/components/menu/MenuTabs";
 import { DailyMenuList } from "@/components/menu/DailyMenuList";
 import { WeeklyMenuList } from "@/components/menu/WeeklyMenuList";
 import { Allergens } from "@/components/menu/Allergens";
+import { CatalogCta } from "@/components/catalog/CatalogCta";
 import { getMenuData } from "@/lib/get-menu";
 
 export const dynamic = "force-dynamic";
@@ -24,6 +25,7 @@ export default async function MenuPage() {
         daily={<DailyMenuList menus={dailyMenus} />}
         weekly={<WeeklyMenuList dishes={weeklyDishes} />}
       />
+      <CatalogCta />
       <Allergens items={allergens} />
     </>
   );

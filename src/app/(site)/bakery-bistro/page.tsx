@@ -112,10 +112,10 @@ export default function BakeryBistroPage() {
                   className="h-[320px] w-full"
                 />
                 <div className="px-8 py-7 text-center">
-                  <h2 className="font-display text-[19px] leading-none font-normal text-ink">
+                  <h2 className="font-banner text-[19px] leading-none font-[400] text-ink">
                     {card.title}
                   </h2>
-                  <p className="mt-2.5 text-[11.5px] text-stone">{card.description}</p>
+                  <p className="font-body mt-2.5 text-[11.5px] font-[400] text-stone">{card.description}</p>
                   <div className="mt-6 flex flex-wrap items-center justify-center gap-5">
                     <TextLink href={card.href}>{card.linkLabel}</TextLink>
                     <Button href={site.orderUrl} size="sm">
@@ -129,22 +129,25 @@ export default function BakeryBistroPage() {
 
           <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {smallCards.map((card) => (
-              <article key={card.title} className="flex flex-col bg-paper">
+              <article
+                key={card.title}
+                className="flex flex-col bg-paper sm:h-[560px] lg:h-[664px]"
+              >
                 <Photo
                   src={card.image}
                   alt={card.title}
                   sizes="(max-width: 1024px) 50vw, 25vw"
-                  className="h-[230px] w-full"
+                  className="h-[280px] w-full shrink-0 sm:h-[320px] lg:min-h-0 lg:flex-1"
                   imageClassName={card.imageClassName}
                 />
-                <div className="flex flex-1 flex-col px-6 py-6 text-center">
-                  <h3 className="font-display text-[16px] leading-none font-normal text-ink">
+                <div className="flex shrink-0 flex-col px-6 py-8 text-center">
+                  <h3 className="font-banner text-[16px] leading-none font-[400] text-ink">
                     {card.title}
                   </h3>
-                  <p className="mt-2.5 text-[11px] leading-relaxed text-stone">
+                  <p className="font-body mt-2.5 text-[11px] leading-relaxed font-[400] text-stone">
                     {card.description}
                   </p>
-                  <div className="mt-auto pt-5">
+                  <div className="mt-5">
                     <TextLink href={card.href}>{card.linkLabel}</TextLink>
                   </div>
                 </div>
