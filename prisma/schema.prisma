@@ -185,6 +185,14 @@ model Event {
   updatedAt DateTime @updatedAt
 }
 
+/// Binary image uploaded from the admin panel. Served via /api/media/[id].
+model StoredImage {
+  id        String   @id @default(cuid())
+  data      Bytes
+  mimeType  String
+  createdAt DateTime @default(now())
+}
+
 /// Pop-up shown to visitors on the public site — picture plus text, switched on from the admin panel.
 model AlertWindow {
   id          String    @id @default(cuid())

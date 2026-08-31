@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import Image from "next/image";
+import { UploadedImage } from "@/components/ui/UploadedImage";
 import Link from "next/link";
 
 const STORAGE_KEY = "fine-alert-dismissed";
@@ -80,7 +80,7 @@ export function AlertModal({
 
         {imageUrl ? (
           <div className="relative aspect-[4/3] w-full">
-            <Image src={imageUrl} alt="" fill sizes="420px" className="object-cover" />
+            <UploadedImage src={imageUrl} alt="" fill sizes="420px" className="object-cover" />
           </div>
         ) : null}
 

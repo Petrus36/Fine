@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { UploadedImage } from "@/components/ui/UploadedImage";
 import { cn } from "@/lib/format";
 import type { EventItem } from "@/types/events";
 
@@ -34,7 +34,7 @@ export function EventRow({
         )}
       >
         {event.imageUrl ? (
-          <Image
+          <UploadedImage
             src={event.imageUrl}
             alt={event.title}
             fill

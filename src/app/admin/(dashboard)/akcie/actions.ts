@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { requireAdmin } from "@/lib/auth";
 import { getPrisma } from "@/lib/prisma";
 import { saveUploadedImage, UploadError } from "@/lib/upload";
+import { deleteStoredImage } from "@/lib/stored-image";
 import { parseCheckbox, text } from "@/lib/admin-parse";
 import type { ActionState } from "@/components/admin/AdminForm";
 
@@ -45,19 +46,30 @@ export async function saveEvent(
     imageUrl = null;
   }
 
+  const prisma = getPrisma();
+  const existing = id
+    ? await prisma.event.findUnique({ where: { id }, select: { imageUrl: true } })
+    : null;
+
+  const finalImageUrl =
+    imageUrl === undefined ? (existing?.imageUrl ?? null) : imageUrl;
+
   const data = {
     title,
     body,
     active,
     position: Number.isInteger(position) ? position : 0,
-    ...(imageUrl === undefined ? {} : { imageUrl }),
+    imageUrl: finalImageUrl,
   };
 
-  const prisma = getPrisma();
   if (id) {
     await prisma.event.update({ where: { id }, data });
   } else {
-    await prisma.event.create({ data: { ...data, imageUrl: imageUrl ?? null } });
+    await prisma.event.create({ data });
+  }
+
+  if (existing?.imageUrl && existing.imageUrl !== finalImageUrl) {
+    await deleteStoredImage(existing.imageUrl);
   }
 
   refresh();
@@ -70,6 +82,13 @@ export async function deleteEvent(formData: FormData) {
   const id = text(formData.get("id"));
   if (!id) return;
 
-  await getPrisma().event.delete({ where: { id } });
+  const prisma = getPrisma();
+  const existing = await prisma.event.findUnique({
+    where: { id },
+    select: { imageUrl: true },
+  });
+
+  await prisma.event.delete({ where: { id } });
+  await deleteStoredImage(existing?.imageUrl);
   refresh();
 }

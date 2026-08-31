@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { UploadedImage } from "@/components/ui/UploadedImage";
 import { requireAdmin } from "@/lib/auth";
 import { getPrisma } from "@/lib/prisma";
 import { deleteAlert, saveAlert } from "./actions";
@@ -92,7 +92,7 @@ export default async function AlertPage() {
 
             {alert?.imageUrl ? (
               <div className="flex flex-wrap items-center gap-4">
-                <Image
+                <UploadedImage
                   src={alert.imageUrl}
                   alt="Aktuálny obrázok upozornenia"
                   width={160}

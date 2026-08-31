@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { UploadedImage } from "@/components/ui/UploadedImage";
 import { AdminForm, type FormAction } from "@/components/admin/AdminForm";
 import { Field } from "@/components/admin/Field";
 import { ImageInput } from "@/components/admin/ImageInput";
@@ -68,7 +68,7 @@ export function EventCard({
 
           {event.imageUrl ? (
             <div className="flex flex-wrap items-center gap-4">
-              <Image
+              <UploadedImage
                 src={event.imageUrl}
                 alt={event.title || "Fotka akcie"}
                 width={160}
