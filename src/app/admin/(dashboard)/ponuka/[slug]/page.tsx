@@ -6,6 +6,7 @@ import { catalogBySlug } from "@/data/catalog";
 import { priceToInput } from "@/lib/admin-parse";
 import { deleteCatalogItem, saveCatalogItem } from "../actions";
 import { CatalogItemCard, type CatalogItemValues } from "@/components/admin/CatalogItemCard";
+import { CatalogSectionPanel } from "@/components/admin/CatalogSectionPanel";
 import { ConfirmSubmit } from "@/components/admin/ConfirmSubmit";
 import { dangerButtonClass } from "@/components/admin/styles";
 
@@ -78,52 +79,53 @@ export default async function PonukaEditorPage({
         </p>
       </div>
 
-      {page.sections.map((section) => {
-        const sectionRows = rows.filter((row) => row.section === section.key);
-        return (
-          <section key={section.key} className="space-y-4">
-            <div>
-              <h2 className="font-display text-[18px] text-espresso">{section.title}</h2>
-              <p className="text-[12px] text-stone">Sekcia ostáva — menia sa len riadky.</p>
-            </div>
+      <div className="space-y-3">
+        {page.sections.map((section) => {
+          const sectionRows = rows.filter((row) => row.section === section.key);
+          return (
+            <CatalogSectionPanel
+              key={section.key}
+              title={section.title}
+              itemCount={sectionRows.length}
+            >
+              {sectionRows.map((row) => (
+                <CatalogItemCard
+                  key={row.id}
+                  item={toValues(page.key, section.key, row)}
+                  action={saveCatalogItem}
+                  submitLabel="Uložiť zmeny"
+                  footer={
+                    <>
+                      <input type="hidden" name="page" value={page.key} />
+                      <ConfirmSubmit
+                        className={dangerButtonClass}
+                        formAction={deleteCatalogItem}
+                        message={`Naozaj vymazať „${row.name}“?`}
+                      >
+                        Vymazať
+                      </ConfirmSubmit>
+                    </>
+                  }
+                />
+              ))}
 
-            {sectionRows.map((row) => (
-              <CatalogItemCard
-                key={row.id}
-                item={toValues(page.key, section.key, row)}
-                action={saveCatalogItem}
-                submitLabel="Uložiť zmeny"
-                footer={
-                  <>
-                    <input type="hidden" name="page" value={page.key} />
-                    <ConfirmSubmit
-                      className={dangerButtonClass}
-                      formAction={deleteCatalogItem}
-                      message={`Naozaj vymazať „${row.name}“?`}
-                    >
-                      Vymazať
-                    </ConfirmSubmit>
-                  </>
-                }
-              />
-            ))}
-
-            <div>
-              <h3 className="mb-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-stone">
-                Pridať do sekcie {section.title}
-              </h3>
-              <CatalogItemCard
-                item={{
-                  ...toValues(page.key, section.key),
-                  position: sectionRows.length,
-                }}
-                action={saveCatalogItem}
-                submitLabel="Pridať položku"
-              />
-            </div>
-          </section>
-        );
-      })}
+              <div>
+                <h3 className="mb-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-stone">
+                  Pridať do sekcie {section.title}
+                </h3>
+                <CatalogItemCard
+                  item={{
+                    ...toValues(page.key, section.key),
+                    position: sectionRows.length,
+                  }}
+                  action={saveCatalogItem}
+                  submitLabel="Pridať položku"
+                />
+              </div>
+            </CatalogSectionPanel>
+          );
+        })}
+      </div>
     </div>
   );
 }
