@@ -20,21 +20,24 @@ function mapDailyMenus(
     }>;
   }>,
 ): DailyMenu[] {
-  return days.map((day) => ({
-    id: day.id,
-    weekday: day.weekday,
-    items: [...day.items]
-      .sort((a, b) => COURSE_ORDER.indexOf(a.course) - COURSE_ORDER.indexOf(b.course))
-      .map(
-        (item): MenuItem => ({
-          id: item.id,
-          course: item.course,
-          name: item.name,
-          allergens: item.allergens,
-          price: item.price ? item.price.toNumber() : null,
-        }),
-      ),
-  }));
+  return days
+    .map((day) => ({
+      id: day.id,
+      weekday: day.weekday,
+      items: [...day.items]
+        .filter((item) => item.name.trim().length > 0)
+        .sort((a, b) => COURSE_ORDER.indexOf(a.course) - COURSE_ORDER.indexOf(b.course))
+        .map(
+          (item): MenuItem => ({
+            id: item.id,
+            course: item.course,
+            name: item.name,
+            allergens: item.allergens,
+            price: item.price ? item.price.toNumber() : null,
+          }),
+        ),
+    }))
+    .filter((day) => day.items.length > 0);
 }
 
 function mapWeeklyDishes(

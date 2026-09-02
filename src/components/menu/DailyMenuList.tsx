@@ -11,7 +11,9 @@ export function DailyMenuList({ menus }: { menus: DailyMenu[] }) {
   return (
     <Container className="pt-14 pb-16">
       <div className="space-y-14">
-        {menus.map((menu) => {
+        {menus
+          .filter((menu) => menu.items.length > 0)
+          .map((menu) => {
           const items = [...menu.items].sort(
             (a, b) => COURSE_ORDER.indexOf(a.course) - COURSE_ORDER.indexOf(b.course),
           );

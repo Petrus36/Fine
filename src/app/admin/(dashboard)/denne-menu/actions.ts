@@ -85,6 +85,11 @@ export async function saveDay(
   const date = dateOfWeekday(week.year, week.weekNumber, weekday);
 
   await prisma.$transaction(async (tx) => {
+    if (items.length === 0) {
+      await tx.dailyMenu.deleteMany({ where: { weekId, weekday } });
+      return;
+    }
+
     const day = await tx.dailyMenu.upsert({
       where: { weekId_weekday: { weekId, weekday } },
       create: { weekId, weekday, date },
@@ -93,12 +98,9 @@ export async function saveDay(
     });
 
     await tx.menuItem.deleteMany({ where: { dailyMenuId: day.id } });
-
-    if (items.length > 0) {
-      await tx.menuItem.createMany({
-        data: items.map((item) => ({ ...item, dailyMenuId: day.id })),
-      });
-    }
+    await tx.menuItem.createMany({
+      data: items.map((item) => ({ ...item, dailyMenuId: day.id })),
+    });
   });
 
   refreshMenu(weekId);
