@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { AlertWindow } from "@/components/alert/AlertWindow";
+import { CookieBanner } from "@/components/cookies/CookieBanner";
 
 export default function SiteLayout({
   children,
@@ -14,6 +15,7 @@ export default function SiteLayout({
       <Suspense fallback={null}>
         <AlertWindow />
       </Suspense>
+      <CookieBanner />
     </>
   );
 }

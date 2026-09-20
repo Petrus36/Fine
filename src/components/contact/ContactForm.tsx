@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
+import Link from "next/link";
 import { submitContactForm } from "@/app/(site)/kontakt/actions";
 import { contactFormIdleState } from "@/types/contact-form";
 
@@ -82,7 +83,11 @@ export function ContactForm() {
             className="mt-1 size-4 shrink-0 accent-clay"
           />
           <span className="font-body text-[12px] leading-relaxed font-normal text-stone">
-            Súhlasím so spracovaním osobných údajov.
+            Súhlasím so spracovaním osobných údajov na vybavenie správy. Podrobnosti nájdete v{" "}
+            <Link href="/cookies#osobne-udaje" className="text-clay hover:underline">
+              súboroch cookie
+            </Link>
+            .
           </span>
         </label>
 

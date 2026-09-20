@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { CookieSettingsButton } from "@/components/cookies/CookieSettingsButton";
 import { footerLinks, openingHours, site } from "@/data/site";
 
 const columnTitle =
@@ -90,9 +91,18 @@ export function Footer() {
               Prístup ku gastru zostal ten istý ako za čias Fine Restaurant, len s novou vášňou
               ku remeselnému pečivu.
             </p>
-            <p className="font-body text-[10px] font-normal text-paper/45">
-              © {new Date().getFullYear()} Fine Bakery &amp; Bistro. Všetky práva vyhradené.
-            </p>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+              <p className="font-body text-[10px] font-normal text-paper/45">
+                © {new Date().getFullYear()} Fine Bakery &amp; Bistro. Všetky práva vyhradené.
+              </p>
+              <Link
+                href="/cookies"
+                className="font-body text-[10px] font-normal text-paper/45 transition-colors hover:text-paper"
+              >
+                Súbory cookie
+              </Link>
+              <CookieSettingsButton />
+            </div>
           </div>
         </div>
       </Container>
