@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { CatalogPageView } from "@/components/catalog/CatalogPageView";
-import { PreparingOverlay } from "@/components/catalog/PreparingOverlay";
 import { catalogPages } from "@/data/catalog";
 import { getAllergens, getCatalogItems } from "@/lib/get-catalog";
 
@@ -19,9 +18,5 @@ export default async function PecivoPage() {
     getAllergens(),
   ]);
 
-  return (
-    <PreparingOverlay>
-      <CatalogPageView page={page} items={items} allergens={allergens} />
-    </PreparingOverlay>
-  );
+  return <CatalogPageView page={page} items={items} allergens={allergens} />;
 }

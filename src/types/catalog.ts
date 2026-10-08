@@ -29,6 +29,8 @@ export type CatalogSectionLayout =
       number: string;
       imageSide: "left" | "right";
       image: CatalogImageSlot;
+      /** Optional smaller photos under the main image (e.g. pečivo sections). */
+      gallery?: CatalogImageSlot[];
     }
   | {
       kind: "card-split";
@@ -46,6 +48,8 @@ export interface CatalogSectionDef {
   title: string;
   intro?: string;
   layout: CatalogSectionLayout;
+  /** Show items from these DB section keys in one block (display-only merge). */
+  itemSections?: string[];
 }
 
 export interface CatalogPageDef {

@@ -3,6 +3,7 @@ import { CatalogSection } from "./CatalogSection";
 import { CatalogCta } from "./CatalogCta";
 import { Allergens } from "@/components/menu/Allergens";
 import { Container } from "@/components/ui/Container";
+import { itemsForCatalogSection } from "@/lib/catalog-section";
 import type { CatalogItem, CatalogPageDef } from "@/types/catalog";
 import type { Allergen } from "@/types/menu";
 
@@ -40,7 +41,7 @@ export function CatalogPageView({
             <CatalogSection
               key={section.key}
               section={section}
-              items={items.filter((item) => item.section === section.key)}
+              items={itemsForCatalogSection(section, items)}
             />
           ))}
         </Container>

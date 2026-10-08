@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { requireAdmin } from "@/lib/auth";
 import { getPrisma } from "@/lib/prisma";
 import { catalogBySlug } from "@/data/catalog";
+import { catalogSectionKeys } from "@/lib/catalog-section";
 import { priceToInput } from "@/lib/admin-parse";
 import { deleteCatalogItem, saveCatalogItem } from "../actions";
 import { CatalogItemCard, type CatalogItemValues } from "@/components/admin/CatalogItemCard";
@@ -81,7 +82,8 @@ export default async function PonukaEditorPage({
 
       <div className="space-y-3">
         {page.sections.map((section) => {
-          const sectionRows = rows.filter((row) => row.section === section.key);
+          const keys = new Set(catalogSectionKeys(section));
+          const sectionRows = rows.filter((row) => keys.has(row.section));
           return (
             <CatalogSectionPanel
               key={section.key}
@@ -91,7 +93,7 @@ export default async function PonukaEditorPage({
               {sectionRows.map((row) => (
                 <CatalogItemCard
                   key={row.id}
-                  item={toValues(page.key, section.key, row)}
+                  item={toValues(page.key, row.section, row)}
                   action={saveCatalogItem}
                   submitLabel="Uložiť zmeny"
                   footer={

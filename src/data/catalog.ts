@@ -46,37 +46,42 @@ export const catalogPages: Record<CatalogPageKey, CatalogPageDef> = {
     sections: [
       {
         key: "chlieb",
-        title: "Chlieb",
+        title: "Chlieb a slané",
+        itemSections: ["chlieb", "slane", "chlieb-slane"],
         intro:
-          "Chlieb si pečieme sami. Cesto odpočíva celú noc a do pece ide ráno.",
+          "Kváskové chleby a bagety z našej pece, slané croissanty a pečivo na celý deň.",
         layout: {
           kind: "numbered-split",
           number: "01",
           imageSide: "left",
-          image: portrait(pecivoBreadImage, "Bochníky chleba"),
+          image: portrait(
+            "/images/pecivo-zeleninovy-podpecnik.jpg",
+            "Zeleninový podpečník",
+            false,
+          ),
+          gallery: [
+            landscape("/images/pecivo-toasty.jpg", "Slané toasty"),
+            landscape("/images/pecivo-parky-chlieb.jpg", "Chlieb a páročky"),
+          ],
         },
       },
       {
         key: "sladke",
-        title: "Sladké pečivo",
+        title: "Sladké",
         intro:
-          "Maslo, veľa masla. Cesto na croissanty ukladáme ručne a necháme ho oddýchnuť.",
+          "Maslo, veľa masla. Koláče, uzle a croissanty pripravujeme ručne každé ráno.",
         layout: {
           kind: "numbered-split",
           number: "02",
           imageSide: "right",
-          image: portrait("/images/pecivo-sladke.jpg", "Sladké pečivo a croissanty"),
-        },
-      },
-      {
-        key: "slane",
-        title: "Slané pečivo",
-        intro: "Čerstvo pečené slané pečivo, quiche a chrumkavé drobnosti.",
-        layout: {
-          kind: "numbered-split",
-          number: "03",
-          imageSide: "left",
-          image: portrait("/images/pecivo-slane.jpg", "Slané pečivo na tanieri"),
+          image: portrait(
+            "/images/pecivo-croissant-pistacia-ovocie.jpg",
+            "Maslový croissant pistácia, lesné ovocie",
+          ),
+          gallery: [
+            landscape("/images/pecivo-moravsky-kolac.jpg", "Moravský koláč"),
+            landscape("/images/pecivo-lotus-kas-a.jpg", "Lotus kaša s ovocím"),
+          ],
         },
       },
     ],

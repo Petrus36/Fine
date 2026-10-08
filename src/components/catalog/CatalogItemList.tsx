@@ -22,7 +22,7 @@ export function CatalogItemList({
           key={`${group.category ?? "uncategorized"}-${group.items[0]?.id ?? index}`}
           className="space-y-3"
         >
-          {group.category ? (
+          {group.category && group.items.length > 1 ? (
             <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-clay">
               {group.category}
             </p>

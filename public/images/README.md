@@ -8,6 +8,10 @@
 | `ranajky.png` | Homepage — Raňajky card    | |
 | `IMG_9509_web.jpg` | Homepage — Týždenné menu card, Objavte naše menu | |
 | `hf_20260810_121215_ea2f305d-93dd-429a-80e6-52a759941a47.png` | Homepage — Pečenie je remeslom, Bakery & Bistro — Pečivo | |
+| `pecivo-zeleninovy-podpecnik.jpg` | `/pecivo` — Chlieb a slané (hlavná) | |
+| `pecivo-toasty.jpg`, `pecivo-parky-chlieb.jpg` | `/pecivo` — Chlieb a slané (galéria) | |
+| `pecivo-croissant-pistacia-ovocie.jpg` | `/pecivo` — Sladké (hlavná) | |
+| `pecivo-moravsky-kolac.jpg`, `pecivo-lotus-kas-a.jpg` | `/pecivo` — Sladké (galéria) | |
 
 Drop the design photography here using these exact file names. Any file that is
 missing renders as a neutral placeholder, so the layout stays intact until the
